@@ -1,4 +1,4 @@
-package com.example.qldb;
+package com.example.qldb.ActiVity;
 
 import android.annotation.SuppressLint;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.qldb.DatabaseHelper;
+import com.example.qldb.R;
 
 public class MainActivity extends AppCompatActivity {
 

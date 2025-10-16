@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:padding="12dp"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:text="Lịch sử đặt chỗ" android:textStyle="bold" android:textSize="18sp"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvReservations"
+        android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1" android:paddingTop="8dp"/>
+
+    <TextView
+        android:id="@+id/tvEmpty"
+        android:text="Chưa có đặt chỗ nào." android:gravity="center"
+        android:textColor="@android:color/darker_gray" android:padding="16dp"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:visibility="gone"/>
+</LinearLayout>

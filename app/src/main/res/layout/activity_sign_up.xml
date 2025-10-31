@@ -3,84 +3,82 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
     android:background="#F5F5F5">
 
-    <!-- Logo  -->
-
-    <!-- Tiêu đề Đăng ký -->
-
+    <!-- Ảnh logo - nằm ngoài vùng padding -->
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:contentDescription="Logo"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_chef_logo" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:text="Đăng ký"
-        android:textSize="30sp"
-        android:textStyle="bold" />
-
-    <!-- Trường nhập Họ tên -->
-    <EditText
-        android:id="@+id/etFullName"
+    <!-- Phần form đăng ký - có padding riêng -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Họ tên"
-        android:inputType="text"
-        android:layout_marginTop="16dp" />
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <!-- Trường nhập Email/Số điện thoại -->
-    <EditText
-        android:id="@+id/etPhone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Số điện thoại"
-        android:inputType="phone"
-        android:layout_marginTop="16dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:text="Đăng ký"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
-    <!-- Trường nhập Mật khẩu -->
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Mật khẩu"
-        android:inputType="textPassword"
-        android:layout_marginTop="16dp" />
+        <EditText
+            android:id="@+id/etFullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Họ tên"
+            android:inputType="textPersonName"
+            android:layout_marginTop="16dp" />
 
-    <!-- Trường nhập Xác nhận mật khẩu -->
-    <EditText
-        android:id="@+id/etConfirmPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Xác nhận mật khẩu"
-        android:inputType="textPassword"
-        android:layout_marginTop="16dp" />
+        <EditText
+            android:id="@+id/etPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Số điện thoại"
+            android:inputType="phone"
+            android:layout_marginTop="16dp"/>
 
-    <!-- Nút Đăng ký -->
-    <Button
-        android:id="@+id/btnSignUp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Đăng ký"
-        android:backgroundTint="#FF0000"
-        android:textColor="#FFFFFF"
-        android:layout_marginTop="16dp" />
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mật khẩu"
+            android:inputType="textPassword"
+            android:layout_marginTop="16dp" />
 
-    <!-- Liên kết Đã có tài khoản? Đăng nhập -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Đã có tài khoản? Đăng nhập"
-        android:textColor="#000000"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:id="@+id/tvSignInLink" />
-    <!-- Liên kết Đã có tài khoản? Đăng nhập -->
+        <EditText
+            android:id="@+id/etConfirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Xác nhận mật khẩu"
+            android:inputType="textPassword"
+            android:layout_marginTop="16dp" />
+
+        <Button
+            android:id="@+id/btnSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đăng ký"
+            android:backgroundTint="#FF0000"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/tvSignInLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đã có tài khoản? Đăng nhập"
+            android:textColor="#000000"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp" />
+    </LinearLayout>
 
 </LinearLayout>

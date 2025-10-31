@@ -26,4 +26,20 @@ public enum ReservationStatus {
         }
         throw new IllegalArgumentException("Invalid ReservationStatus value: " + value);
     }
+    public String getDisplayName() {
+        switch (this) {
+            case PENDING:
+                return "Chờ xác nhận";
+            case CONFIRMED:
+                return "Đã xác nhận";
+            case CANCELLED:
+                return "Đã hủy";
+            case COMPLETED:
+                return "Hoàn thành";
+            default:
+                return "Không xác định";
+        }
+    }
 }
+
+

@@ -15,7 +15,7 @@
 
         <!-- Đăng ký SignUpActivity làm màn hình khởi động -->
         <activity
-            android:name=".ActiVity.SignInActivity"
+            android:name=".ActiVity.AccountActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,7 +41,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".ActiVity.AccountActivity"
+            android:name=".ActiVity.SignInActivity"
             android:exported="false" />
         <activity
             android:name=".ActiVity.BookingActivity"

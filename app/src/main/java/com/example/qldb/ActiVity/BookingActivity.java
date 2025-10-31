@@ -2,6 +2,7 @@ package com.example.qldb.ActiVity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -216,10 +217,31 @@ public class BookingActivity extends AppCompatActivity {
         view.findViewById(R.id.btnBack).setOnClickListener(v -> dialog.dismiss());
         view.findViewById(R.id.btnConfirm).setOnClickListener(v -> {
             dialog.dismiss();
+// 🔹 Lưu thông tin đặt chỗ vào SharedPreferences
+            saveReservationToSharedPrefs(name, date, time);
+
             Toast.makeText(this, "Đặt chỗ thành công!", Toast.LENGTH_SHORT).show();
+
+            // 🔹 Quay lại màn lịch sử
+            Intent intent = new Intent(this, ReservationHistoryActivity.class);
+            startActivity(intent);
+
             finish();
+
+
         });
 
         dialog.show();
     }
+    private void saveReservationToSharedPrefs(String restaurantName, String date, String time) {
+        android.content.SharedPreferences prefs = getSharedPreferences("reservations", MODE_PRIVATE);
+        android.content.SharedPreferences.Editor editor = prefs.edit();
+
+        // Ghép thành một chuỗi, ví dụ: "Vườn nướng BBQ|26/10/2025|11:30;Nhà hàng ABC|27/10/2025|18:00"
+        String existing = prefs.getString("data", "");
+        String newEntry = restaurantName + "|" + date + "|" + time + ";";
+        editor.putString("data", existing + newEntry);
+        editor.apply();
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.example.qldb;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -8,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "restaurant.db";
@@ -154,6 +157,61 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return userId;
+    }
+
+    public boolean updateReservationStatus(int reservationId, String newStatus, int adminId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("status", newStatus);
+        values.put("confirmed_by", adminId);
+        values.put("confirmed_at", System.currentTimeMillis()); // Hoặc dùng CURRENT_TIMESTAMP
+
+        // Cập nhật dòng
+        int rowsAffected = db.update("Reservations", values, "reservation_id = ?",
+                new String[]{String.valueOf(reservationId)});
+
+        db.close();
+        return rowsAffected > 0;
+    }
+
+    /**
+     * Lấy danh sách đặt chỗ theo trạng thái (pending, confirmed, v.v.)
+     *
+     * @param status Trạng thái cần lọc
+     * @return Danh sách các đối tượng Reservation
+     */
+    public List<Reservation> getReservationsByStatus(String status) {
+        List<Reservation> reservationList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // Câu lệnh JOIN để lấy tên người dùng từ bảng Users
+        String query = "SELECT r.reservation_id, u.full_name, r.reservation_date, r.time_slot, r.num_people, r.status " +
+                "FROM Reservations r " +
+                "JOIN Users u ON r.user_id = u.user_id " +
+                "WHERE r.status = ? " +
+                "ORDER BY r.reservation_date, r.time_slot";
+
+        Cursor cursor = db.rawQuery(query, new String[]{status});
+
+        if (cursor.moveToFirst()) {
+            do {
+                @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex("reservation_id"));
+                @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex("full_name"));
+                @SuppressLint("Range") String date = cursor.getString(cursor.getColumnIndex("reservation_date"));
+                @SuppressLint("Range") String time = cursor.getString(cursor.getColumnIndex("time_slot"));
+                @SuppressLint("Range") int numPeople = cursor.getInt(cursor.getColumnIndex("num_people"));
+                @SuppressLint("Range") String resStatus = cursor.getString(cursor.getColumnIndex("status"));
+
+                String dateTime = date + " - " + time; // Ghép ngày và giờ
+
+                Reservation reservation = new Reservation(id, name, dateTime, numPeople, resStatus);
+                reservationList.add(reservation);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return reservationList;
     }
 
 

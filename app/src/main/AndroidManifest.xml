@@ -40,6 +40,11 @@
             android:name=".SettingActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".BookingManagementActivity"
+            android:exported="false" />
+
+
     </application>
 
 </manifest>

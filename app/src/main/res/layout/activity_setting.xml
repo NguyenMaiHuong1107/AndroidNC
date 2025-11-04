@@ -396,13 +396,13 @@
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:background="#FFFFFF"
-        android:weightSum="4">
+        android:weightSum="5">
 
         <!-- Trang chủ -->
         <LinearLayout
+            android:id="@+id/layoutHome"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -425,6 +425,7 @@
 
         <!-- Đặt chỗ -->
         <LinearLayout
+            android:id="@+id/layoutBooking"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -445,6 +446,29 @@
                 android:textColor="#000000"/>
         </LinearLayout>
 
+        <!-- Quản lý đặt chỗ -->
+        <LinearLayout
+            android:id="@+id/layoutManage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_calendar"
+                android:contentDescription="Quản lý đặt chỗ" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quản lý đặt chỗ"
+                android:textSize="12sp"
+                android:textColor="#000000"/>
+        </LinearLayout>
+
         <!-- Tài khoản -->
         <LinearLayout
             android:id="@+id/layoutAccount"
@@ -457,26 +481,26 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:backgroundTint="#000000"
-                android:contentDescription="Tài khoản"
                 android:src="@drawable/ic_account"
-                app:srcCompat="@drawable/ic_account" />
+                android:contentDescription="Tài khoản" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tài khoản"
-                android:textColor="#000000"
-                android:textSize="12sp" />
+                android:textSize="12sp"/>
         </LinearLayout>
 
         <!-- Thêm -->
         <LinearLayout
+            android:id="@+id/layoutAdd"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
 
             <ImageView
                 android:layout_width="24dp"
@@ -491,7 +515,6 @@
                 android:textSize="12sp"
                 android:textColor="#A91919"/>
         </LinearLayout>
-
     </LinearLayout>
 
 

@@ -10,7 +10,8 @@
         android:id="@+id/contentArea"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bottomNavigation">
+        android:layout_above="@id/bottomNavigation"
+        android:layout_alignParentTop="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,8 +34,7 @@
                     android:src="@drawable/ic_user_profile"
                     android:contentDescription="Avatar"
                     android:scaleType="centerCrop"
-                    app:shapeAppearanceOverlay="@style/CircleImageView"/>
-
+                    app:shapeAppearanceOverlay="@style/CircleImageView" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -59,7 +59,6 @@
                         android:textColor="#000000"
                         android:textSize="16sp"
                         android:textStyle="bold" />
-
                 </LinearLayout>
 
                 <ImageView
@@ -69,11 +68,12 @@
                     android:layout_gravity="center_vertical"
                     app:tint="#9E9E9E" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#E0E0E0"
-                android:layout_marginVertical="8dp"/>
+                android:layout_marginVertical="8dp" />
 
             <!-- Thay đổi mật khẩu -->
             <LinearLayout
@@ -107,12 +107,12 @@
                     android:layout_gravity="center_vertical"
                     app:tint="#9E9E9E" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#E0E0E0"
-                android:layout_marginVertical="8dp"/>
-
+                android:layout_marginVertical="8dp" />
 
             <!-- Lịch sử đơn đặt chỗ -->
             <LinearLayout
@@ -146,11 +146,12 @@
                     android:layout_gravity="center_vertical"
                     app:tint="#9E9E9E" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#E0E0E0"
-                android:layout_marginVertical="8dp"/>
+                android:layout_marginVertical="8dp" />
 
             <!-- Nút Đăng xuất -->
             <Button
@@ -161,23 +162,22 @@
                 android:backgroundTint="#FF5555"
                 android:text="Đăng xuất"
                 android:textColor="#FFFFFF" />
-
         </LinearLayout>
     </ScrollView>
 
-    <!-- Bottom Navigation (cố định dưới) -->
-    <!-- Bottom Navigation -->
+    <!-- Thanh menu cố định dưới -->
     <LinearLayout
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_alignParentBottom="true"
         android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
         android:background="#FFFFFF"
-        android:weightSum="4">
+        android:weightSum="5">
 
         <!-- Trang chủ -->
         <LinearLayout
+            android:id="@+id/layoutHome"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -195,12 +195,12 @@
                 android:layout_height="wrap_content"
                 android:text="Trang chủ"
                 android:textSize="12sp"
-                android:textColor="#000000"/>
-                android:background="
+                android:textColor="#000000" />
         </LinearLayout>
 
         <!-- Đặt chỗ -->
         <LinearLayout
+            android:id="@+id/layoutBooking"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -218,11 +218,12 @@
                 android:layout_height="wrap_content"
                 android:text="Đặt chỗ"
                 android:textSize="12sp"
-                android:textColor="#000000"/>
+                android:textColor="#000000" />
         </LinearLayout>
 
-        <!-- Tài khoản -->
+        <!-- Quản lý đặt chỗ -->
         <LinearLayout
+            android:id="@+id/layoutManage"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -232,21 +233,41 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:backgroundTint="#A91919"
-                android:contentDescription="Tài khoản"
+                android:src="@drawable/ic_calendar"
+                android:contentDescription="Quản lý đặt chỗ" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quản lý đặt chỗ"
+                android:textSize="12sp"
+                android:textColor="#000000" />
+        </LinearLayout>
+
+        <!-- Tài khoản -->
+        <LinearLayout
+            android:id="@+id/layoutAccount"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/ic_account"
-                app:srcCompat="@drawable/ic_account" />
+                android:contentDescription="Tài khoản" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tài khoản"
                 android:textSize="12sp"
-                android:textColor="#FF0000"/> <!-- Đang chọn thì đổi màu -->
+                android:textColor="#ff0000"/>
         </LinearLayout>
 
         <!-- Thêm -->
-
         <LinearLayout
             android:id="@+id/layoutAdd"
             android:layout_width="0dp"
@@ -268,11 +289,8 @@
                 android:layout_height="wrap_content"
                 android:text="Thêm"
                 android:textSize="12sp"
-                android:textColor="#000000"/>
+                android:textColor="#000000" />
         </LinearLayout>
-
-
     </LinearLayout>
-
 
 </RelativeLayout>

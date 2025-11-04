@@ -95,6 +95,13 @@ public class SignUpActivity extends AppCompatActivity {
             startActivity(new Intent(SignUpActivity.this, SignInActivity.class));
             finish();
         });
+
+        tvSignInLink.setOnClickListener(v -> {
+            startActivity(new Intent(SignUpActivity.this, BookingManagementActivity.class));
+            finish();
+        });
+
+
     }
 
     // Phương thức băm mật khẩu SHA-256

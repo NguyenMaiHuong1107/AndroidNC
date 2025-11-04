@@ -65,6 +65,16 @@ public class AccountActivity extends AppCompatActivity {
             Intent intent = new Intent(AccountActivity.this, SettingActivity.class);
             startActivity(intent);
         });
+
+
+        LinearLayout layoutManage = findViewById(R.id.layoutManage);
+        layoutManage.setOnClickListener(v -> {
+            Intent intent = new Intent(AccountActivity.this, BookingManagementActivity.class);
+            startActivity(intent);
+            finish(); // nếu muốn đóng trang Tài khoản khi mở trang mới
+        });
+
+
     }
 
 

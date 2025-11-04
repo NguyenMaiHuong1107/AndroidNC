@@ -28,6 +28,14 @@ public class SettingActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        LinearLayout layoutBooking = findViewById(R.id.layoutBooking);
+
+        layoutBooking.setOnClickListener(v -> {
+            Intent intent = new Intent(SettingActivity.this, BookingManagementActivity.class);
+            startActivity(intent);
+        });
+
+
     }
 
 

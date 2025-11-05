@@ -25,4 +25,16 @@ public enum TableStatus {
         }
         throw new IllegalArgumentException("Invalid TableStatus value: " + value);
     }
+    public String getDisplayName() {
+        switch (this) {
+            case AVAILABLE:
+                return "Trống";
+            case OCCUPIED:
+                return "Đang phục vụ";
+            case RESERVED:
+                return "Đã đặt";
+            default:
+                return "Không xác định";
+        }
+    }
 }

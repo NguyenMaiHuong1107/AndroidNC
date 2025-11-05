@@ -1,4 +1,4 @@
-package com.example.qldb;
+package com.example.qldb.ActiVity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,6 +9,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.qldb.DatabaseHelper;
+import com.example.qldb.R;
+import com.example.qldb.UserModel;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -53,23 +57,31 @@ public class SignInActivity extends AppCompatActivity {
             boolean isValid = dbHelper.checkUser(phone, hashedPassword);
 
             if (isValid) {
-                int userId = dbHelper.getUserId(phone, hashedPassword);// ✅ lấy ID đúng user
+                int userId = dbHelper.getUserId(phone, hashedPassword);
                 if (userId != -1) {
-                    // Lưu session
+                    // ✅ Lấy thông tin người dùng từ DB (dùng hàm bạn đã có)
+                    UserModel u = dbHelper.getUserById(userId);
+
+                    // ✅ Lưu cả user_id + full_name + phone vào SharedPreferences
                     SharedPreferences prefs = getSharedPreferences("UserSession", MODE_PRIVATE);
                     SharedPreferences.Editor editor = prefs.edit();
                     editor.putInt("user_id", userId);
+                    if (u != null) {
+                        editor.putString("full_name", u.fullName);
+                        editor.putString("phone", u.phone);
+                    }
                     editor.apply();
 
                     Toast.makeText(this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
-
-                    // Chuyển sang AccountActivity
-                    startActivity(new Intent(SignInActivity.this, AccountActivity.class));
+                    startActivity(new Intent(SignInActivity.this, HomeActivity.class));
                     finish();
+                } else {
+                    Toast.makeText(this, "Không tìm thấy người dùng!", Toast.LENGTH_SHORT).show();
                 }
             } else {
                 Toast.makeText(this, "Số điện thoại hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
             }
+
         });
 
         // Liên kết sang màn hình Đăng ký

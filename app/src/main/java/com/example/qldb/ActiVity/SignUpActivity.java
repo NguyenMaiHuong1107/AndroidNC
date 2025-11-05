@@ -1,4 +1,4 @@
-package com.example.qldb;
+package com.example.qldb.ActiVity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,6 +8,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.qldb.DatabaseHelper;
+import com.example.qldb.R;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -76,18 +79,21 @@ public class SignUpActivity extends AppCompatActivity {
             long userId = dbHelper.insertUser(fullName, phone, hashedPassword, "user");
 
             if (userId != -1) {
-                // Lưu user_id vào SharedPreferences
+                // ĐÃ có sẵn fullName, phone từ input — không cần query lại DB
                 SharedPreferences prefs = getSharedPreferences("UserSession", MODE_PRIVATE);
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putInt("user_id", (int) userId);
+                editor.putString("full_name", fullName);
+                editor.putString("phone", phone);
                 editor.apply();
 
                 Toast.makeText(this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(SignUpActivity.this, SignInActivity.class));
+                startActivity(new Intent(SignUpActivity.this, HomeActivity.class)); // hoặc AccountActivity
                 finish();
             } else {
                 Toast.makeText(this, "Lỗi khi đăng ký. Vui lòng thử lại.", Toast.LENGTH_SHORT).show();
             }
+
         });
 
         // Xử lý chuyển sang màn hình Đăng nhập

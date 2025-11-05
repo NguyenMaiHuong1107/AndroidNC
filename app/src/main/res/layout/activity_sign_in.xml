@@ -1,66 +1,66 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F5F5F5"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:orientation="vertical">
 
-    <!-- Logo (thay bằng file ảnh thực tế) -->
+    <!-- Ảnh nằm ngoài padding -->
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="128dp"
-        android:layout_gravity="top"
+        android:layout_width="432dp"
+        android:layout_height="150dp"
         android:contentDescription="Logo"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_chef_logo" />
 
-    <!-- Tiêu đề Đăng nhập -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:text="Đăng nhập"
-        android:textSize="30sp"
-        android:textStyle="bold" />
-
-    <!-- Trường nhập Email/Số điện thoại -->
-    <EditText
-        android:id="@+id/etPhone"
+    <!-- Phần nội dung có padding -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Số điện thoại"
-        android:inputType="phone"
-        android:layout_marginTop="16dp"/>
+        android:orientation="vertical"
+        android:padding="16dp">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Đăng nhập"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
 
-    <!-- Trường nhập Mật khẩu -->
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Mật khẩu"
-        android:inputType="textPassword" />
+        <EditText
+            android:id="@+id/etPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Số điện thoại"
+            android:inputType="phone"
+            android:layout_marginTop="16dp"/>
 
-    <!-- Nút Đăng nhập -->
-    <Button
-        android:id="@+id/btnSignIn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#FF0000"
-        android:text="Đăng nhập"
-        android:textColor="#FFFFFF" />
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Mật khẩu"
+            android:inputType="textPassword" />
 
-    <!-- Liên kết Chưa có tài khoản? Đăng ký -->
-    <TextView
-        android:id="@+id/tvSignUpLink"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:text="Chưa có tài khoản? Đăng ký"
-        android:textColor="#000000" />
+        <Button
+            android:id="@+id/btnSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#FF0000"
+            android:text="Đăng nhập"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/tvSignUpLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:text="Chưa có tài khoản? Đăng ký"
+            android:textColor="#000000" />
+    </LinearLayout>
 </LinearLayout>
